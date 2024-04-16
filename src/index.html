@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List App</title>
+  </head>
+  <body>
+    <header><h1>Tasks</h1></header>
+    <sidebar></sidebar>
+    <div id="controls">
+      <button id="createTaskBtn">Create Task</button>
+    </div>
+    <div id="modalContainer" class="modal-container">
+      <div id="modal">
+        <form id="taskForm">
+          <div class="form-input">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <div class="form-input">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required />
+          </div>
+          <div class="form-input">
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" name="dueDate" required />
+          </div>
+          <div class="form-input">
+            <label for="Priority">Priority:</label>
+            <input type="radio" id="low" name="priority" value="low" required />
+            Low
+            <input
+              type="radio"
+              id="medium"
+              name="priority"
+              value="medium"
+              required
+            />
+            Medium
+            <input
+              type="radio"
+              id="high"
+              name="priority"
+              value="high"
+              required
+            />
+            High
+          </div>
+          <div class="form-input">
+            <label for="Notes">Notes:</label>
+            <input type="text" id="notes" name="notes" />
+          </div>
+          <div class="form-input">
+            <label for="Complete">Complete?</label>
+            <input type="checkbox" id="complete" name="complete" />
+          </div>
+          <div formBtnZone>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="taskZone"></div>
+  </body>
+</html>

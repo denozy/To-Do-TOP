@@ -1,7 +1,19 @@
-node+modules/
-*.log
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+
+# Build output
+dist/
+
+# Dependency lock files
+package-lock.json
+
+# IDE/Editor settings
+.idea/
 .vscode/
-*.exe
-*.dll
-*.so
-*.dylib
+
+# Temporary files
+*.log
+*.tmp
