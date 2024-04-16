@@ -1,4 +1,6 @@
 import './styles.css';
+
+//factory function for creating a to do object
 function createToDo(title, description, dueDate, priority, notes, complete) {
     return {
         title,
@@ -10,6 +12,7 @@ function createToDo(title, description, dueDate, priority, notes, complete) {
     };
 }
 
+//takes inputs from modal turns them into html elements and adds to div
 function createTaskElement(task) {
     const taskDiv = document.createElement('div');
     taskDiv.innerHTML = `
@@ -23,11 +26,13 @@ function createTaskElement(task) {
     return taskDiv;
 }
 
+//function that adds taskDiv to webpage
 function addTaskToDom(taskElement) {
     const taskZone = document.getElementById('taskZone');
     taskZone.appendChild(taskElement);
 }
 
+//function to collect data from modal
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('taskForm');
     form.addEventListener('submit', function(event) {
@@ -50,3 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 });
+
+//hide input modal
+//make create task btn show input modal
+//make tasks appear in a pretty way
+//add unique modifieres to tasks? project/daily/completed tasks
+//show those modifiers in a sidebar and seamlessly switch between them like in the previous project where you clear html content and show other content without reloading the page
+//make everything prettier. 
+
+//modal x button close
+    let closeBtn = document.getElementById('closeModal');
+    let modalContainer = document.getElementById('modalContainer');
+    closeBtn.addEventListener('click', () => {
+        modalContainer.style.display = 'none';
+        form.reset();
+    });
+
+    let createTask = document.getElementById('createTaskBtn');
+    createTask.addEventListener('click', () => {
+        modalContainer.style.display = 'block';
+    });
