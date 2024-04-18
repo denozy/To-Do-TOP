@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #76b5c5;
+    --secondary-color: #1e81b0;
+    --primary-font-color: #e28743;
+}
+
+
+/* general styling */
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +14,80 @@
 
 header {
     text-align: center;
+    background-color: var(--secondary-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    color: var(--primary-font-color);
 }
 
+body {
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+sidebar {
+    background-color: var(--secondary-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Sidebar */
+/* #sidebarLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+    margin-top: 5vh;
+    margin-bottom: 30vh;
+} */
+
+.categories {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    margin-bottom: 35vh;
+    margin-top: 5vh;
+}
+
+.sidebar-completed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-font-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+a:hover {
+    color: hsla(26, 73%, 57%, 0.774);
+}
+
+#createTaskBtn {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    background-color: #eab676;
+    transition: transform 0.1s ease-in-out;
+}
+
+#createTaskBtn:hover {
+    background-color: hwb(33 46% 8% / 0.904);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+
+/* popup modal */
 #modalContainer {
     position: fixed;
     top: 0;
@@ -17,6 +97,7 @@ header {
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 1000;
     display: none;
+    pointer-events: none;
 
 }
 #modal {
@@ -24,22 +105,106 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #eeeee4;;
     border: 4px black solid;
     padding: 10px;
     display: flex;
     justify-content: left;
+    pointer-events: auto;
 
 }
 
 .form-input {
     margin: 5px 0px;
+    z-index: 1001;
 }
 
 label {
     display: block;
 }
 
+.due-date:hover {
+    cursor: pointer;
+}
+
+.radio-button {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: 600;
+    margin: 2px;
+}
+
+.radio-button.low {
+    background-color: hsla(140, 71%, 43%, 0.7);
+    border: solid transparent 2px;
+ 
+}
+
+.radio-button.medium {
+    background-color: hsla(59, 82%, 47%, 0.70);
+    border: solid transparent 2px;
+}
+
+.radio-button.high {
+    background-color: rgba(170, 18, 18, 0.7);
+    border: solid transparent 2px;
+}
+
+.radio-button.low:hover {
+    background-color: hsl(140, 71%, 43%);
+    border: solid black 2px;
+ 
+}
+
+.radio-button.medium:hover {
+    background-color: hsl(59, 82%, 47%);
+    border: solid black 2px;
+}
+
+.radio-button.high:hover {
+    background-color: rgb(170, 18, 18);
+    border: solid black 2px;
+}
+
+.form-input input[type="radio"] {
+    display: none;
+}
+
+.form-input input[type='radio']:checked + .radio-button {
+    border: solid black 2px;
+}
+
+#low:checked + .radio-button.low {
+    background-color: hsl(140, 71%, 43%); 
+}
+
+#medium:checked + .radio-button.medium {
+    background-color: hsl(59, 82%, 47%);
+}
+
+#high:checked + .radio-button.high {
+    background-color: rgb(170, 18, 18);
+    border: solid black 2px;
+}
+
+.inline-label {
+    display: flex;
+    margin: 10 0;
+}
+
+.inline-input {
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+select {
+    margin-left: 7px;
+    padding: 1px;
+}
 .close-modal {
 position: absolute;
 top: 5px;
@@ -49,9 +214,41 @@ border: 2px solid black;
 cursor: pointer;
 font-size: 20px;
 color: #000;
-width: 20px;
-height: 20px;
+width: 24px;
+height: 24px;
 display: flex;
 justify-content: center;
 align-items: center;
+padding: 2px;
+padding-bottom: 5px;
+box-sizing: border-box;
+}
+
+.submit-btn {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+}
+
+#controls {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.toDoItem {
+    border: 2px solid black;
+    width: 200px;
+    background-color: #eeeee4;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    align-self: center;
 }

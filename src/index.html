@@ -6,63 +6,100 @@
     <title>To Do List App</title>
   </head>
   <body>
-    <header><h1>Tasks</h1></header>
-    <sidebar></sidebar>
-    <div id="controls">
-      <button id="createTaskBtn">Create Task</button>
-    </div>
-    <div id="modalContainer" class="modal-container">
-      <div id="modal">
-        <button id="closeModal" class="close-modal" type="reset">x</button>
-        <form id="taskForm">
-          <div class="form-input">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required />
-          </div>
-          <div class="form-input">
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required />
-          </div>
-          <div class="form-input">
-            <label for="dueDate">Due Date:</label>
-            <input type="date" id="dueDate" name="dueDate" required />
-          </div>
-          <div class="form-input">
-            <label for="Priority">Priority:</label>
-            <input type="radio" id="low" name="priority" value="low" required />
-            Low
-            <input
-              type="radio"
-              id="medium"
-              name="priority"
-              value="medium"
-              required
-            />
-            Medium
-            <input
-              type="radio"
-              id="high"
-              name="priority"
-              value="high"
-              required
-            />
-            High
-          </div>
-          <div class="form-input">
-            <label for="Notes">Notes:</label>
-            <input type="text" id="notes" name="notes" />
-          </div>
-          <div class="form-input">
-            <label for="Complete">Complete?</label>
-            <input type="checkbox" id="complete" name="complete" />
-          </div>
-          <div formBtnZone>
-            <input type="submit" value="Submit" />
-          </div>
-        </form>
+    <sidebar>
+      <div id="sidebarLinks">
+        <div class="categories">
+          <a href="url_here">Urgent</a>
+          <a href="url_here">Projects</a>
+          <a href="url_here">Daily</a>
+          <a href="url_here">Goals</a>
+        </div>
+        <div class="sidebar-completed"><a href="url_here">Completed</a></div>
       </div>
+    </sidebar>
+    <div id="mainContent">
+      <header><h1>Tasks</h1></header>
+      <div id="controls">
+        <button id="createTaskBtn">Create Task</button>
+      </div>
+      <div id="modalContainer" class="modal-container">
+        <div id="modal">
+          <button id="closeModal" class="close-modal" type="reset">x</button>
+          <form id="taskForm">
+            <div class="form-input">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" required />
+            </div>
+            <div class="form-input">
+              <label for="description">Description:</label>
+              <input type="text" id="description" name="description" required />
+            </div>
+            <div class="form-input">
+              <label for="dueDate">Due Date:</label>
+              <input
+                type="date"
+                id="dueDate"
+                name="dueDate"
+                class="due-date"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <label for="Priority">Priority:</label>
+              <input
+                type="radio"
+                id="low"
+                name="priority"
+                value="low"
+                required
+              />
+              <label for="low" class="radio-button low">Low</label>
+              <input
+                type="radio"
+                id="medium"
+                name="priority"
+                value="medium"
+                required
+              />
+              <label for="medium" class="radio-button medium">Medium</label>
+              <input
+                type="radio"
+                id="high"
+                name="priority"
+                value="high"
+                required
+              />
+              <label for="high" class="radio-button high">High</label>
+            </div>
+            <div class="form-input">
+              <label for="Notes">Notes:</label>
+              <input type="text" id="notes" name="notes" />
+            </div>
+            <div class="form-input inline-label">
+              <label for="category">Category:</label>
+              <select id="category" name="category">
+                <option value="urgent">Urgent</option>
+                <option value="projects">Projects</option>
+                <option value="daily">Daily</option>
+                <option value="goals">Goals</option>
+              </select>
+            </div>
+            <div class="form-input inline-label">
+              <label for="Complete">Complete?</label>
+              <input
+                type="checkbox"
+                id="complete"
+                class="inline-input"
+                name="complete"
+              />
+            </div>
+            <div formBtnZone>
+              <input type="submit" value="Submit" class="submit-btn" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="taskZone"></div>
     </div>
-
-    <div id="taskZone"></div>
   </body>
 </html>

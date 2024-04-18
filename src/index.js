@@ -1,13 +1,14 @@
 import './styles.css';
 
 //factory function for creating a to do object
-function createToDo(title, description, dueDate, priority, notes, complete) {
+function createToDo(title, description, dueDate, priority, notes, category, complete) {
     return {
         title,
         description,
         dueDate,
         priority,
         notes,
+        category,
         complete
     };
 }
@@ -21,6 +22,7 @@ function createTaskElement(task) {
     <p>Due Date: ${task.dueDate}</p>
     <p>Priority: ${task.priority}</p>
     <p>Notes: ${task.notes}</p>
+    <p>Category: ${task.category}</p>
     <p>Complete: ${task.complete ? 'Yes' : 'No'}</p>
     `;
     return taskDiv;
@@ -43,12 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const dueDate = document.getElementById('dueDate').value;
         const priority = document.querySelector('input[name="priority"]:checked').value;
         const notes = document.getElementById('notes').value;
+        const categoryElement = document.getElementById('category');
+        const category = categoryElement.options[categoryElement.selectedIndex].text;
         const complete = document.getElementById('complete').checked;
+        
 
-        const newTask = createToDo(title, description, dueDate, priority, notes, complete);
+        const newTask = createToDo(title, description, dueDate, priority, notes, category, complete);
 
         // Do something with newTask, like adding it to your task list
        const taskElement = createTaskElement(newTask);
+       taskElement.classList.add('toDoItem');
        addTaskToDom(taskElement);
 
        form.reset();
@@ -56,12 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//hide input modal
-//make create task btn show input modal
-//make tasks appear in a pretty way
-//add unique modifieres to tasks? project/daily/completed tasks
-//show those modifiers in a sidebar and seamlessly switch between them like in the previous project where you clear html content and show other content without reloading the page
-//make everything prettier. 
 
 //modal x button close
     let closeBtn = document.getElementById('closeModal');
@@ -75,3 +75,47 @@ document.addEventListener('DOMContentLoaded', () => {
     createTask.addEventListener('click', () => {
         modalContainer.style.display = 'block';
     });
+
+
+//script to make task creation modal movable
+let offsetX = 0;
+let offsetY = 0;
+
+function mouseDown(e) {
+
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') {
+        return;
+    }
+
+    console.log('mousedown');
+    e.preventDefault();
+    offsetX = e.clientX - modal.offsetLeft;
+    offsetY = e.clientY - modal.offsetTop;
+    document.addEventListener('mousemove', mouseMove);
+    document.addEventListener('mouseup', mouseUp);
+}
+
+function mouseMove(e) {
+    console.log('mousemove');
+    modal.style.left = (e.clientX - offsetX) + 'px';
+    modal.style.top = (e.clientY - offsetY) + 'px';
+}
+
+function mouseUp() {
+    console.log('mouseup');
+    document.removeEventListener('mousemove', mouseMove);
+    document.removeEventListener('mouseup', mouseUp);
+}
+
+modal.addEventListener('mousedown', mouseDown);
+
+
+
+    
+//assign tasks to certain categories corresponding with the sidebar.
+//
+//add functionality to the sidebar links, these probably need to be buttons
+//buttons that clear the content of the page and then replace with a different one
+//use logic from previous project for this ^^^
+//make to do items movable. 
+//fix 
